@@ -86,6 +86,7 @@ int main (int argc, char** argv) {
       printf("   -e <float>    set a down exponent       (default: %4.2f,   fast cubing)\n", downexp);
       printf("   -f <float>    set a down fraction       (default: %4.2f,   fast cubing)\n", fraction);
       printf("   -l <int>      limit the number of cubes (default: %4.0f,      no limit)\n", (float) cubeLimit);
+      printf("   -l2 <int>     limit the number of cubes (default: %4.0f,      no limit)\n", (float) cubeLimit2);
       printf("   -s <int>      seed for heuristics       (default: %4.0f,     no random)\n", (float) seed);
       printf("   -#            #SAT preprocessing only\n\n");
 //      printf("   -v            more verbose output\n\n");
@@ -95,6 +96,7 @@ int main (int argc, char** argv) {
       printf("   -wfr          add windfall resolvents   (default: %s)\n\n",(WFR)?"on":"off");
       printf("c OUTPUT OPTIONS:\n\n");
       printf("   -o <file>     emit the cubes to <file>  (default: %s)\n", cubesFile);
+      printf("   -o2 <file>    emit the 2nd cubes to <file>  (default: %s)\n", cubesFile2);
       printf("   -q            turn on quiet mode        (set default output to stdout)\n");
       printf("   -cnf          add the cnf to the cubes\n\n");
       printf("c MAGIC CONSTANTS:\n\n");
@@ -108,12 +110,14 @@ int main (int argc, char** argv) {
 
   for (i = 2; i < argc; i++) {
     if (strcmp(argv[i], "-o"  ) == 0) { strcpy (cubesFile, argv[i+1]); }
+    if (strcmp(argv[i], "-o2" ) == 0) { strcpy (cubesFile2, argv[i+1]);}
     if (strcmp(argv[i], "-p"  ) == 0) { mode = PLAIN_MODE;             }
     if (strcmp(argv[i], "-#"  ) == 0) { sharp_mode = 1;                }
     if (strcmp(argv[i], "-q"  ) == 0) { quiet_mode = 1;                }
     if (strcmp(argv[i], "-d"  ) == 0) { cut_depth  = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-n"  ) == 0) { cut_var    = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-l"  ) == 0) { cubeLimit  = strtoul (argv[i+1], NULL, 10); }
+    if (strcmp(argv[i], "-l2" ) == 0) { cubeLimit2 = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-L"  ) == 0) { hardLimit  = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-s"  ) == 0) { seed       = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-gah") == 0) { gah       ^= 1;                }

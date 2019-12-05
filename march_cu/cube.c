@@ -181,5 +181,21 @@ void printDecisionTree () {
     else printDecisionNode (Dnodes[1], 0, 0, -1);
   if (quiet_mode == 0)
     fclose (cubes);
+
+  if (cubeLimit2)
+  {
+    filterTree (cubeLimit2);
+    cubes = fopen (cubesFile2, "w");
+
+    if (discrepancy_search) {
+      int target = 0;
+      do {
+        printDecisionNode (Dnodes[1], 0, 0, target++); }
+      while (_nr_cubes != nr_cubes); }
+      else printDecisionNode (Dnodes[1], 0, 0, -1);
+
+    fclose (cubes);
+  }
+
   free (cubeTrail);
 }
