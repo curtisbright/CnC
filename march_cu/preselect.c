@@ -283,12 +283,7 @@ void RealisePreselectedSet () {
 	{
 	    lit = *(_freevarsArray++);
 
-	    const int xc = activevars % 111;
-	    const int xb = (xc-12)/9;
-	    const int lc = lit % 111;
-	    const int lb = (lc-12)/9;
-
-	    if( Rank[ lit ] > Rank_trigger && xb == lb )
+	    if( Rank[ lit ] > Rank_trigger )
 	    {
 	       	som += Rank[ lit ];
                	lookaheadArray[ lookaheadArrayLength++ ] = lit;
