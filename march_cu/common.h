@@ -178,7 +178,7 @@
 /* miscellaneous */
 //#define DEBUGGING
 #ifndef CUT_OFF
-  #define PROGRESS_BAR
+  //#define PROGRESS_BAR
 #endif
 
 /*

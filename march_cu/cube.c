@@ -166,9 +166,9 @@ void printDecisionTree () {
   sum_cubes   = 0;
   printWeights (Dnodes[1]);
 
-  if (quiet_mode == 0) {
-    printf("c number of cubes %i, including %i refuted leaves\n", num_cubes + num_refuted, num_refuted);
-    printf("c average weight cubes %.3f, average weights leaves %.3f\n", sum_cubes / (float) num_cubes, sum_refuted / (float) num_refuted); }
+  //if (quiet_mode == 0) {
+  //  printf("c number of cubes %i, including %i refuted leaves\n", num_cubes + num_refuted, num_refuted);
+  //  printf("c average weight cubes %.3f, average weights leaves %.3f\n", sum_cubes / (float) num_cubes, sum_refuted / (float) num_refuted); }
 
   if (cubeLimit)
     filterTree (cubeLimit);
