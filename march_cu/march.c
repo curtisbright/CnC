@@ -23,9 +23,9 @@
 #include "memory.h"
 
 void handleUNSAT () {
-  if (quiet_mode == 0) {
-    printf ("c main():: nodeCount: %i\n", nodeCount);
-    printf ("c main():: time=%f\n", ((float)(clock()))/CLOCKS_PER_SEC); }
+  //if (quiet_mode == 0) {
+  //  printf ("c main():: nodeCount: %i\n", nodeCount);
+  //  printf ("c main():: time=%f\n", ((float)(clock()))/CLOCKS_PER_SEC); }
   if (mode == PLAIN_MODE) {
     printf( "s UNSATISFIABLE\n" ); }
   else { printUNSAT (); }
@@ -133,7 +133,7 @@ int main (int argc, char** argv) {
     if (strcmp(argv[i], "-f"  ) == 0) { fraction   = atof (argv[i+1]); } }
 
   if ((mode != PLAIN_MODE) && (quiet_mode == 0)) {
-    printf("c down fraction = %.3f and down exponent = %.3f\n", (float) fraction, (float) downexp);
+    //printf("c down fraction = %.3f and down exponent = %.3f\n", (float) fraction, (float) downexp);
     printf("c cubes are emitted to %s\n", cubesFile); }
 
   if (seed) srand (seed);
@@ -150,12 +150,12 @@ int main (int argc, char** argv) {
           if (Clength[i] > 3) {
             kSAT_flag = 1; break; }
 
-        if (quiet_mode == 0) {
+        /*if (quiet_mode == 0) {
           if (kSAT_flag) {
             printf("c clause-length heuristic with magic constants: bin = %.2f and dec = %.2f\n", h_bin, h_dec); }
 	  else {
             printf("c literal-weight heuristic with magic constants: min = %.2f, bin = %.2f, and max = %.2f\n", h_min, h_bin, h_max); } }
-
+*/
 #ifndef TERNARYLOOK
 #ifdef RESOLVENTLOOK
 	if (resolvent_look() == UNSAT) handleUNSAT();
@@ -236,12 +236,13 @@ int main (int argc, char** argv) {
 #ifdef CUBE
           nodeCount = getNodes ();
 #endif
-          printf ("c main():: nodeCount: %i\n", nodeCount);
-          printf ("c main():: dead ends in main: %i\n", mainDead);
-          printf ("c main():: lookAheadCount: %lli\n", lookAheadCount);
-          printf ("c main():: unitResolveCount: %i\n", unitResolveCount);
+          //printf ("c main():: nodeCount: %i\n", nodeCount);
+          //printf ("c main():: dead ends in main: %i\n", mainDead);
+          //printf ("c main():: lookAheadCount: %lli\n", lookAheadCount);
+          //printf ("c main():: unitResolveCount: %i\n", unitResolveCount);
           printf ("c time = %.2f seconds\n", ((float)(clock()))/CLOCKS_PER_SEC);
-          printf ("c main():: necessary_assignments: %i\n", necessary_assignments); }
+          //printf ("c main():: necessary_assignments: %i\n", necessary_assignments); 
+        }
 
 #ifdef COUNT_SAT
 	printf ("c main():: found %i solutions\n", count_sat);

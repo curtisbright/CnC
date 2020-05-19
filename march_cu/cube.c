@@ -156,8 +156,8 @@ void printDecisionTree () {
   if (quiet_mode) cubes = stdout;
   else            cubes = fopen (cubesFile, "w");
 
-  if (quiet_mode == 0)
-    printf("c print learnt clauses and cubes\n");
+  //if (quiet_mode == 0)
+  //  printf("c print learnt clauses and cubes\n");
 
   _nr_cubes   = 0;
   num_refuted = 0;
