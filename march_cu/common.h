@@ -366,7 +366,6 @@ int *clause_red_depth;
 */
 
 char cubesFile[1024];
-char cubesFile2[1024];
 char initFile[1024];
 
 unsigned int seed, hardLimit;
@@ -395,7 +394,6 @@ char *cubeFile, *learnFile;
 int cweight;
 double downexp, fraction;
 unsigned int cubeLimit;
-unsigned int cubeLimit2;
 
 #ifdef SUPER_LINEAR
 int subtree_size;
