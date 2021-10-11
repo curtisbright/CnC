@@ -1,5 +1,6 @@
 struct solver { // The variables in the struct are described in the allocate procedure
-  int  *DB, nVars, nClauses, mem_used, mem_fixed, mem_max, maxLemmas, nLemmas, *buffer,
+  int64_t mem_used, mem_fixed, mem_max;
+  int  *DB, nVars, nClauses, maxLemmas, nLemmas, *buffer,
        *assumptions, *assumeHead, nConflicts, *model, *reason, *falseStack,
        *false, *first, *forced, *processed, *assigned, *next, *prev, head, res, set, not; };
 
