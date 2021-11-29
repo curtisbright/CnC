@@ -24,7 +24,7 @@
 //#define DETECT_COMPONENTS
 //#define COMPENSATION_RESOLVENTS
 
-#define SAT_INCREASE	1000
+#define SAT_INCREASE	1500
 
 #include <stdio.h>
 #include <stdlib.h>
