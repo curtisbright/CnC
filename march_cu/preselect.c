@@ -59,8 +59,6 @@ void init_preselection() {
   CandidatesSet = (int*  ) malloc( sizeof( int   ) * ( nrofvars + 1 ) );
   Rank          = (float*) malloc( sizeof( float ) * ( nrofvars + 1 ) );
 
-  initial_freevars = freevars;
-
 #ifdef HIDIFF
   clause_weight = (float*) malloc( sizeof(float) * nrofbigclauses );
 #endif
@@ -125,15 +123,18 @@ void init_freevars() {
             }
 	}
 
+        int freeentryvars = 0;
+        for( int i = 0; i < freevars; i++ )
+        {
+        const int j = freevarsArray[ i ];
+        if(j < maxvar)
+          freeentryvars++;
+        }
+
+        initial_freevars = freevars;
+        initial_freeentryvars = freeentryvars;
+
         if (quiet_mode == 0) {
-          int freeentryvars = 0;
-          for( int i = 0; i < freevars; i++ )
-          {
-            const int j = freevarsArray[ i ];
-            if(j < maxvar)
-               freeentryvars++;
-          }
-          initial_freeentryvars = freeentryvars;
           printf ("c number of free variables = %i\n", freeentryvars);
           //printf ("c number of free variables = %i\n", freevars);
           printf ("c highest active variable  = %i\n", activevars); }
