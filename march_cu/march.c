@@ -85,7 +85,7 @@ int main (int argc, char** argv) {
       printf("   -n <int>      set a static cutoff vars  (default: %4.0f, dynamic depth)\n", (float) cut_var);
       printf("   -e <float>    set a down exponent       (default: %4.2f,   fast cubing)\n", downexp);
       printf("   -f <float>    set a down fraction       (default: %4.2f,   fast cubing)\n", fraction);
-      printf("   -m <int>      max variable to cube with (default: %4.0f,   fast cubing)\n", (float) maxvar);
+      printf("   -m <int>      max variable to cube with (default: %4.0f,      no limit)\n", (float) maxvar);
       printf("   -l <int>      limit the number of cubes (default: %4.0f,      no limit)\n", (float) cubeLimit);
       printf("   -s <int>      seed for heuristics       (default: %4.0f,     no random)\n", (float) seed);
       printf("   -#            #SAT preprocessing only\n\n");
@@ -132,7 +132,7 @@ int main (int argc, char** argv) {
 
   if ((mode != PLAIN_MODE) && (quiet_mode == 0)) {
     printf("c down fraction = %.3f and down exponent = %.3f\n", (float) fraction, (float) downexp);
-    printf("c maximum variable to appear in cubes is %d\n", maxvar);
+    if (maxvar) printf("c maximum variable to appear in cubes is %d\n", maxvar);
     printf("c cubes are emitted to %s\n", cubesFile); }
 
   if (seed) srand (seed);

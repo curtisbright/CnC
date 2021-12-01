@@ -127,7 +127,7 @@ void init_freevars() {
         for( int i = 0; i < freevars; i++ )
         {
         const int j = freevarsArray[ i ];
-        if(j < maxvar)
+        if(!maxvar || j <= maxvar)
           freeentryvars++;
         }
 
@@ -135,8 +135,8 @@ void init_freevars() {
         initial_freeentryvars = freeentryvars;
 
         if (quiet_mode == 0) {
-          printf ("c number of free variables = %i\n", freeentryvars);
-          //printf ("c number of free variables = %i\n", freevars);
+          if (maxvar) printf ("c number of free entry variables = %i\n", freeentryvars);
+          printf ("c number of free variables = %i\n", freevars);
           printf ("c highest active variable  = %i\n", activevars); }
 #ifdef CUBE
 	part_free = freevars;
@@ -190,7 +190,7 @@ int ConstructCandidatesSet( )
 
 	    UNFIX(_freevar);
 
-	    if( _freevar > maxvar )                                       continue;
+	    if( maxvar && _freevar > maxvar )                             continue;
 	    if( _freevar > original_nrofvars )                            continue;
 	    if( (VeqDepends[ _freevar ] == EQUIVALENT) && eq_check_flag ) continue;
 //	    if( VeqDepends[ _freevar ] != INDEPENDENT )                   continue;
@@ -358,7 +358,7 @@ int PreselectAll( )
         for( i = 0; i < freevars; i++ )
 	{
 	    _freevar = freevarsArray[ i ];
-	    if (_freevar > maxvar) continue;
+	    if (maxvar && _freevar > maxvar) continue;
 	    if( (Reductions[ _freevar ] > 0) || (Reductions[ -_freevar ] > 0) ||
 		(BinaryImp[  _freevar ][ 0 ] > bImp_satisfied[  _freevar ]) ||
 		(BinaryImp[ -_freevar ][ 0 ] > bImp_satisfied[ -_freevar ]) ||

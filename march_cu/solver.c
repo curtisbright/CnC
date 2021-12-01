@@ -545,7 +545,7 @@ int march_solve_rec() {
       for( int i = 0; i < freevars; i++ )
       {
         const int j = freevarsArray[ i ];
-        if(j < maxvar)
+        if(!maxvar || j <= maxvar)
           freeentryvars++;
       }
       if ((cut_depth && (depth == cut_depth)) || (dynamic && (freevars < free_th)) || (cut_var && (initial_freeentryvars - freeentryvars > cut_var)))
