@@ -422,7 +422,7 @@ int percent;
 float *Rank;
 int Rank_trigger;
 float *diff, *_diff, *size_diff, *diff_tmp, *_diff_tmp, **diff_depth, *diff_table;
-int initial_freevars;
+int initial_freevars, initial_freeentryvars;
 
 double percentage_forced;
 
