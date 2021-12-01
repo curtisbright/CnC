@@ -541,7 +541,7 @@ int march_solve_rec() {
 //        if (freevars < 4800 + depth * 10)  // buildroot
 //        if (freevars < 3000)  // buildroot
 //        if (freevars < free_th)  // new default
-      if ((cut_depth && (depth == cut_depth)) || (dynamic && (freevars < free_th)) || (cut_var && (freevars < cut_var)))
+      if ((cut_depth && (depth == cut_depth)) || (dynamic && (freevars < free_th)) || (cut_var && (initial_freevars - freevars >= cut_var)))
       {
 	nodeCount--;
 	nr_cubes++;
