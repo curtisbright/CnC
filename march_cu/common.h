@@ -459,6 +459,7 @@ int *freevarsArray;
 int nrofvars, nrofclauses, nrofceq, nroforigvars;
 int original_nrofvars, original_nrofclauses;
 int freevars, activevars, depth;
+int maxvar;
 
 int **Ceq, **Veq, **VeqLUT, *CeqValues, *CeqSizes;
 int *CeqStamps;

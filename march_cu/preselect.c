@@ -180,6 +180,7 @@ int ConstructCandidatesSet( )
 
 	    UNFIX(_freevar);
 
+	    if( _freevar > maxvar )                                       continue;
 	    if( _freevar > original_nrofvars )                            continue;
 	    if( (VeqDepends[ _freevar ] == EQUIVALENT) && eq_check_flag ) continue;
 //	    if( VeqDepends[ _freevar ] != INDEPENDENT )                   continue;
@@ -347,6 +348,7 @@ int PreselectAll( )
         for( i = 0; i < freevars; i++ )
 	{
 	    _freevar = freevarsArray[ i ];
+	    if (_freevar > maxvar) continue;
 	    if( (Reductions[ _freevar ] > 0) || (Reductions[ -_freevar ] > 0) ||
 		(BinaryImp[  _freevar ][ 0 ] > bImp_satisfied[  _freevar ]) ||
 		(BinaryImp[ -_freevar ][ 0 ] > bImp_satisfied[ -_freevar ]) ||
