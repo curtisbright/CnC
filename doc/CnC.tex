@@ -494,7 +494,7 @@ of look-aheads inaccurate as they have been computed on a different formula. It 
 values, because more accurate heuristic values result in better decisions. Also, a failed literal may turn other literals into failed
 literals too, which can be computed by recomputing the heuristic value. However, the number of times the 
 heuristic value can be recomputed in a single node of the search-tree should be limited in order to avoid extreme cases.
-This limit is my default 9 for single depth look-aheads  and 2 for double depth look-aheads. These values can be changed using
+This limit is by default 9 for single depth look-aheads  and 2 for double depth look-aheads. These values can be changed using
 the command line options {\tt -sli} and {\tt -dli}, respectively. For most heuristics hold that: what is good for pure look-ahead is 
 good for cubing. However, this is not the case for these two limits. For pure look-ahead these limits should be high, while for 
 cubing these values should be low. For several formulas it is best to set them to 0, thereby turning the recomputation of 
