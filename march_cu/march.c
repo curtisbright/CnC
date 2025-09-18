@@ -43,6 +43,7 @@ int main (int argc, char** argv) {
 
   hardLimit  = 0; // no hard limit
   seed       = 0; // no initial seed
+  cnf        = 0;
   quiet_mode = 0;
   cut_depth  = 0;
   cut_var    = 0;
@@ -128,7 +129,39 @@ int main (int argc, char** argv) {
     if (strcmp(argv[i], "-sli") == 0) { sl_iter    = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-dli") == 0) { dl_iter    = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-e"  ) == 0) { downexp    = atof (argv[i+1]); }
-    if (strcmp(argv[i], "-f"  ) == 0) { fraction   = atof (argv[i+1]); } }
+    if (strcmp(argv[i], "-f"  ) == 0) { fraction   = atof (argv[i+1]); }
+    if (strcmp(argv[i], "-cnf") == 0) { cnf        = 1;                } }
+
+  if (cnf) {
+    FILE *cubes, *in;
+    int c;
+
+    if (quiet_mode) cubes = stdout;
+    else            cubes = fopen (cubesFile, "w");
+
+    // Print icnf header
+    fprintf (cubes, "p inccnf\n");
+
+    if ((in = fopen (argv[1], "r")) == NULL) {
+      printf ("c runParser():: input file could not be opened!\n");
+      exit (EXIT_CODE_ERROR); }
+
+    // Skip the first line
+    while ((c = fgetc(in)) != EOF) {
+      if (c == '\n') {
+        break; // end of first line
+      }
+    }
+
+    // Copy the rest of the file
+    while ((c = fgetc(in)) != EOF) {
+      fputc(c, cubes);
+    }
+
+    fclose(in);
+    if (quiet_mode == 0)
+      fclose (cubes);
+  }
 
   if ((mode != PLAIN_MODE) && (quiet_mode == 0)) {
     printf("c down fraction = %.3f and down exponent = %.3f\n", (float) fraction, (float) downexp);

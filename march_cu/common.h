@@ -370,6 +370,7 @@ char initFile[1024];
 
 unsigned int seed, hardLimit;
 int *trail, trailSize;
+int cnf;
 
 int addIMP, addWFR, gah;
 
