@@ -385,7 +385,7 @@ double sum_th, factor_th;
 double free_th;
 int part_free;
 int nr_cubes;
-unsigned int cut_depth, cut_var, dynamic;
+unsigned int cut_depth, cut_var, cut_rmvar, dynamic;
 #endif
 
 int mode, sharp_mode, quiet_mode;

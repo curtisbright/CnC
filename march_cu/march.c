@@ -47,6 +47,7 @@ int main (int argc, char** argv) {
   quiet_mode = 0;
   cut_depth  = 0;
   cut_var    = 0;
+  cut_rmvar  = 0;
   cubeLimit  = 0;
   strcpy (cubesFile, "/tmp/cubes.icnf");
 
@@ -83,7 +84,8 @@ int main (int argc, char** argv) {
       printf("   -p            plain / no cube mode\n");
 //      printf("   -c <file>     parse cube from <file>    (default:             no cube)\n");
       printf("   -d <int>      set a static cutoff depth (default: %4.0f, dynamic depth)\n", (float) cut_depth);
-      printf("   -n <int>      # of free vars to remove  (default: %4.0f, dynamic depth)\n", (float) cut_var);
+      printf("   -n <int>      set a static cutoff vars  (default: %4.0f, dynamic depth)\n", (float) cut_var);
+      printf("   -r <int>      # of free vars to remove  (default: %4.0f, dynamic depth)\n", (float) cut_rmvar);
       printf("   -e <float>    set a down exponent       (default: %4.2f,   fast cubing)\n", downexp);
       printf("   -f <float>    set a down fraction       (default: %4.2f,   fast cubing)\n", fraction);
       printf("   -m <int>      max variable to cube with (default: %4.0f,      no limit)\n", (float) maxvar);
@@ -115,6 +117,7 @@ int main (int argc, char** argv) {
     if (strcmp(argv[i], "-q"  ) == 0) { quiet_mode = 1;                }
     if (strcmp(argv[i], "-d"  ) == 0) { cut_depth  = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-n"  ) == 0) { cut_var    = strtoul (argv[i+1], NULL, 10); }
+    if (strcmp(argv[i], "-r"  ) == 0) { cut_rmvar  = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-l"  ) == 0) { cubeLimit  = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-L"  ) == 0) { hardLimit  = strtoul (argv[i+1], NULL, 10); }
     if (strcmp(argv[i], "-s"  ) == 0) { seed       = strtoul (argv[i+1], NULL, 10); }
@@ -170,7 +173,7 @@ int main (int argc, char** argv) {
 
   if (seed) srand (seed);
 
-  if (!cut_var && !cut_depth) dynamic = 1;
+  if (!cut_var && !cut_rmvar && !cut_depth) dynamic = 1;
 
   /***** Parsing... *******/
   runParser (argv[1]);

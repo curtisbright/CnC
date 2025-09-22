@@ -548,7 +548,7 @@ int march_solve_rec() {
         if(!maxvar || j <= maxvar)
           freeentryvars++;
       }
-      if ((cut_depth && (depth == cut_depth)) || (dynamic && (freevars < free_th)) || (cut_var && (initial_freeentryvars - freeentryvars > cut_var)))
+      if ((cut_depth && (depth == cut_depth)) || (dynamic && (freevars < free_th)) || (cut_var && (freevars < cut_var)) || (cut_rmvar && (initial_freeentryvars - freeentryvars > cut_rmvar)))
       {
 	nodeCount--;
 	nr_cubes++;
