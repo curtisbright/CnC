@@ -166,14 +166,14 @@ int main (int argc, char** argv) {
       fclose (cubes);
   }
 
+  if (!cut_var && !cut_rmvar && !cut_depth) dynamic = 1;
+
   if ((mode != PLAIN_MODE) && (quiet_mode == 0)) {
-    printf("c down fraction = %.3f and down exponent = %.3f\n", (float) fraction, (float) downexp);
+    if (dynamic) printf("c down fraction = %.3f and down exponent = %.3f\n", (float) fraction, (float) downexp);
     if (maxvar) printf("c maximum variable to appear in cubes is %d\n", maxvar);
     printf("c cubes are emitted to %s\n", cubesFile); }
 
   if (seed) srand (seed);
-
-  if (!cut_var && !cut_rmvar && !cut_depth) dynamic = 1;
 
   /***** Parsing... *******/
   runParser (argv[1]);
